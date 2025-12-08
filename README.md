@@ -20,7 +20,7 @@ SubNodeSync 是一个轻量级的分布式节点同步框架，提供节点注�
 ## 安装
 
 ```bash
-go get github.com/yourusername/subnodesync
+go get github.com/HY-805/subnodesync
 ```
 
 ## 快速开始
