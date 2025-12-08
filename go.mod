@@ -1,4 +1,4 @@
-module github.com/yourusername/subnodesync
+module github.com/HY-805/SubNodeSync
 
 go 1.21
 

@@ -15,7 +15,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/yourusername/subnodesync/pkg/node"
+	"github.com/HY-805/SubNodeSync/pkg/node"
 )
 
 func main() {
@@ -50,4 +50,3 @@ func main() {
 
 	log.Printf("应用已退出")
 }
-

@@ -17,8 +17,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/yourusername/subnodesync/pkg/node"
-	"github.com/yourusername/subnodesync/pkg/sync"
+	"github.com/HY-805/SubNodeSync/pkg/node"
+	"github.com/HY-805/SubNodeSync/pkg/sync"
 )
 
 func main() {
@@ -123,4 +123,3 @@ func (h *DataQueryHandler) Handle(ctx context.Context, cmd *sync.Command) (*sync
 func (h *DataQueryHandler) GetCommandName() string {
 	return "data_query"
 }
-

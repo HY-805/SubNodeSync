@@ -21,9 +21,9 @@ import (
 	gosync "sync"
 	"time"
 
-	nodesync "github.com/yourusername/subnodesync/pkg/sync"
-	"github.com/yourusername/subnodesync/pkg/transport"
-	"github.com/yourusername/subnodesync/pkg/util"
+	nodesync "github.com/HY-805/SubNodeSync/pkg/sync"
+	"github.com/HY-805/SubNodeSync/pkg/transport"
+	"github.com/HY-805/SubNodeSync/pkg/util"
 )
 
 // 配置常量
@@ -488,4 +488,3 @@ func IsAnotherInstanceRunning(nodeName string) (bool, int) {
 func GetLockFilePath(nodeName string) string {
 	return util.GetLockFilePath(nodeName)
 }
-

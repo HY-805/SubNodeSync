@@ -17,8 +17,8 @@ import (
 	"syscall"
 	"time"
 
-	nodepkg "github.com/yourusername/subnodesync/pkg/node"
-	"github.com/yourusername/subnodesync/pkg/sync"
+	nodepkg "github.com/HY-805/SubNodeSync/pkg/node"
+	"github.com/HY-805/SubNodeSync/pkg/sync"
 )
 
 func main() {
@@ -97,4 +97,3 @@ func (h *CustomCommandHandler) Handle(ctx context.Context, cmd *sync.Command) (*
 func (h *CustomCommandHandler) GetCommandName() string {
 	return h.name
 }
-

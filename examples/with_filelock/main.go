@@ -27,7 +27,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/yourusername/subnodesync/pkg/node"
+	"github.com/HY-805/SubNodeSync/pkg/node"
 )
 
 func main() {
@@ -83,4 +83,3 @@ func main() {
 	log.Printf("收到退出信号，正在关闭...")
 	// defer 会自动调用 node.Shutdown() 释放锁
 }
-
