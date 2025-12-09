@@ -25,11 +25,11 @@ import (
 
 // MQTT 主题格式常量
 const (
-	TopicHeartbeat = "v1/node/sync/%s/heartbeat" // 心跳主题
-	TopicRegister  = "v1/node/sync/%s/register"  // 注册主题
-	TopicStatus    = "v1/node/sync/%s/status"    // 状态主题
-	TopicControl   = "v1/node/sync/%s/control"   // 控制主题
-	TopicConfig    = "v1/node/sync/%s/config"    // 配置主题
+	TopicHeartbeat = "v1/subapp/pcs/%s/heartbeat" // 心跳主题
+	TopicRegister  = "v1/subapp/pcs/%s/register"  // 注册主题
+	TopicStatus    = "v1/subapp/pcs/%s/status"    // 状态主题
+	TopicControl   = "v1/subapp/pcs/%s/control"   // 控制主题
+	TopicConfig    = "v1/subapp/pcs/%s/config"    // 配置主题
 )
 
 // Command 命令结构
@@ -203,7 +203,7 @@ func (r *CommandReceiver) handleControlMessage(client mqtt.Client, msg mqtt.Mess
 func (r *CommandReceiver) sendRegisterMessage() {
 	registerMsg := map[string]interface{}{
 		"timestamp":   time.Now().Format(time.RFC3339),
-		"node_name":   r.nodeName,
+		"app_name":    r.nodeName,
 		"instance_id": r.instanceID,
 		"version":     r.nodeCtx.GetVersion(),
 		"pid":         os.Getpid(),
@@ -219,7 +219,7 @@ func (r *CommandReceiver) sendRegisterMessage() {
 
 	// 如果有完整的版本信息，则添加到消息中
 	if nodeVersion := r.nodeCtx.GetNodeVersion(); nodeVersion != nil {
-		registerMsg["node_version"] = map[string]interface{}{
+		registerMsg["app_version"] = map[string]interface{}{
 			"git_version":    nodeVersion.GitVersion,
 			"git_commit":     nodeVersion.GitCommit,
 			"git_tree_state": nodeVersion.GitTreeState,
@@ -286,7 +286,7 @@ func (r *CommandReceiver) sendHeartbeat() {
 	// 构建心跳消息
 	heartbeatMsg := map[string]interface{}{
 		"timestamp":   time.Now().Format(time.RFC3339),
-		"node_name":   r.nodeName,
+		"app_name":    r.nodeName,
 		"instance_id": r.instanceID,
 		"status":      string(r.nodeCtx.GetStatus()),
 		"pid":         os.Getpid(),
@@ -302,7 +302,7 @@ func (r *CommandReceiver) sendHeartbeat() {
 
 	// 添加版本信息
 	if nodeVersion := r.nodeCtx.GetNodeVersion(); nodeVersion != nil {
-		heartbeatMsg["node_version"] = map[string]interface{}{
+		heartbeatMsg["app_version"] = map[string]interface{}{
 			"git_version":    nodeVersion.GitVersion,
 			"git_commit":     nodeVersion.GitCommit,
 			"git_tree_state": nodeVersion.GitTreeState,
@@ -343,4 +343,3 @@ func getHostname() string {
 	}
 	return hostname
 }
-

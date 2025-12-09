@@ -2,7 +2,7 @@
 
 [![Go Version](https://img.shields.io/badge/Go-1.21+-blue.svg)](https://golang.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/subnodesync)](https://goreportcard.com/report/github.com/yourusername/subnodesync)
+[![Go Report Card](https://goreportcard.com/badge/github.com/HY-805/SubNodeSync)](https://goreportcard.com/report/github.com/HY-805/SubNodeSync)
 
 SubNodeSync 是一个轻量级的分布式节点同步框架，提供节点注册、心跳管理、命令控制等功能。适用于需要集中管理多个分布式应用实例的场景。
 
@@ -20,7 +20,7 @@ SubNodeSync 是一个轻量级的分布式节点同步框架，提供节点注�
 ## 安装
 
 ```bash
-go get github.com/HY-805/subnodesync
+go get github.com/HY-805/SubNodeSync
 ```
 
 ## 快速开始
@@ -36,7 +36,7 @@ import (
     "os/signal"
     "syscall"
 
-    "github.com/yourusername/subnodesync/pkg/node"
+    "github.com/HY-805/SubNodeSync/pkg/node"
 )
 
 func main() {
@@ -66,7 +66,7 @@ import (
     "os/signal"
     "syscall"
 
-    "github.com/yourusername/subnodesync/pkg/node"
+    "github.com/HY-805/SubNodeSync/pkg/node"
 )
 
 func main() {
@@ -96,7 +96,7 @@ package main
 import (
     "time"
 
-    "github.com/yourusername/subnodesync/pkg/node"
+    "github.com/HY-805/SubNodeSync/pkg/node"
 )
 
 func main() {
@@ -127,7 +127,7 @@ package main
 import (
     "context"
 
-    "github.com/yourusername/subnodesync/pkg/sync"
+    "github.com/HY-805/SubNodeSync/pkg/sync"
 )
 
 // 实现 CommandHandler 接口
@@ -164,7 +164,7 @@ func main() {
 ├─────────────────────────────────────────────────────────────┤
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐         │
 │  │    node     │  │    sync     │  │  transport  │         │
-│  │  节点管理   │  │  命令同步   │  │   传输层    │         │
+│  │  节点管理    │  │  命令同步     │  │   传输层    │         │
 │  └─────────────┘  └─────────────┘  └─────────────┘         │
 │         │                │                │                 │
 │         └────────────────┼────────────────┘                 │
@@ -177,12 +177,12 @@ func main() {
 
 ## MQTT 主题结构
 
-| 主题 | 用途 | 示例 |
-|------|------|------|
-| `v1/node/sync/{node_name}/register` | 注册消息 | `v1/node/sync/my-app/register` |
-| `v1/node/sync/{node_name}/heartbeat` | 心跳消息 | `v1/node/sync/my-app/heartbeat` |
-| `v1/node/sync/{node_name}/control` | 控制命令 | `v1/node/sync/my-app/control` |
-| `v1/node/sync/{node_name}/status` | 状态消息 | `v1/node/sync/my-app/status` |
+| 主题                                   | 用途 | 示例 |
+|--------------------------------------|------|------|
+| `v1/subapp/pcs/{node_name}/register` | 注册消息 | `v1/subapp/pcs/my-app/register` |
+| `v1/subapp/pcs/{node_name}/heartbeat` | 心跳消息 | `v1/subapp/pcs/my-app/heartbeat` |
+| `v1/subapp/pcs/{node_name}/control`   | 控制命令 | `v1/subapp/pcs/my-app/control` |
+| `v1/subapp/pcs/{node_name}/status`    | 状态消息 | `v1/subapp/pcs/my-app/status` |
 
 ## 内置命令
 
