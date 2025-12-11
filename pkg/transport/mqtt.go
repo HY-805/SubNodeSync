@@ -64,7 +64,7 @@ func NewMQTTClient(nodeName string, config *MQTTConfig) (*MQTTClient, error) {
 
 	clientID := config.ClientID
 	if clientID == "" {
-		clientID = nodeName + "-client"
+		clientID = nodeName + "-client" + fmt.Sprintf("_%d", time.Now().UnixMilli())
 	}
 
 	mqttClient := &MQTTClient{
@@ -290,4 +290,3 @@ func (m *MQTTClient) GetStatusTopic() string {
 func (m *MQTTClient) GetLogTopic() string {
 	return m.logTopic
 }
-
